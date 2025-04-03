@@ -4,12 +4,52 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
 
 var scanner = bufio.NewScanner(os.Stdin)
 
+func calcularMedia(notas [3]float64) (media float64){
+	var soma float64
+	for _, nota := range notas{
+		
+		soma += nota
+	}
+
+	media = soma / 3
+	return
+}
+
 func Ex1() {
-	fmt.Println("Exercício 1")
+	fmt.Println("Digite as três notas do aluno no modelo de numeração americado e separadas por um espaço")
+	scanner.Scan()
+	notas := scanner.Text()
+	notasSlice := strings.Fields(notas)
+	if len(notasSlice) != 3 {
+		fmt.Println("Por favor, insira exatamente três notas separadas por espaço.")
+		return
+	}
+
+	var notasFloat []float64
+	for _, nota := range notasSlice {
+		notaFloat, err := strconv.ParseFloat(nota, 64)
+		if err != nil {
+			fmt.Println("Erro ao converter as notas. Certifique-se de que são números válidos.")
+			return
+		}
+		notasFloat = append(notasFloat, notaFloat)
+	}
+
+	media := calcularMedia([3]float64(notasFloat))
+
+	fmt.Printf("MÉDIA = %.2f \n", media)
+
+	if media >= 6{
+		fmt.Println("APROVADO")
+	}else {
+		fmt.Println("REPROVADO")
+	}
 }
 
 func Ex2() {

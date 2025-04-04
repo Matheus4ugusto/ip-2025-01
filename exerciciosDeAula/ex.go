@@ -20,6 +20,7 @@ func CalculateSum() {
 		number, err := strconv.ParseFloat(n, 64)
 		if err != nil {
 			fmt.Println("Insira números válidos")
+			return
 		}
 		notasSliceFloats = append(notasSliceFloats, number)
 	}
@@ -29,4 +30,5 @@ func CalculateSum() {
 	}
 
 	fmt.Println(sum)
+	return
 }

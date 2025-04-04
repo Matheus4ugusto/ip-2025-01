@@ -1,6 +1,7 @@
 package main
 
 import (
+	exerciciosdeaula "IP-2025-01/exerciciosDeAula"
 	lista1 "IP-2025-01/lista-1"
 	lista2 "IP-2025-01/lista-2"
 	lista3 "IP-2025-01/lista-3"
@@ -101,6 +102,9 @@ func main() {
 			38: lista3.Ex38,
 			39: lista3.Ex39,
 			40: lista3.Ex40,
+		},
+		"Ex aulas": {
+			1: exerciciosdeaula.CalculateSum,
 		},
 	}
 

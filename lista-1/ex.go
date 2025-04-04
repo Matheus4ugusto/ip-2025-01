@@ -3,6 +3,7 @@ package lista1
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -111,7 +112,41 @@ func Ex2() {
 }
 
 func Ex3() {
-	fmt.Println("Exercício 3")
+	scanner.Scan()
+	txt1 := scanner.Text()
+	scanner.Scan()
+	txt2 := scanner.Text()
+	scanner.Scan()
+	txt3 := scanner.Text()
+	num1, err1 := strconv.Atoi(txt1)
+	num2, err2 := strconv.Atoi(txt2)
+	num3, err3 := strconv.Atoi(txt3)
+
+	if err1 != nil || err2 != nil || err3 != nil{
+		fmt.Println("Números inválidos")
+		return
+	} 
+	if num1 >= 10 || num2 >= 10 || num3 >= 10 || num1 < 0 || num2 < 0 || num3 < 0{
+		fmt.Println("Somente os número 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 são válidos")
+		return
+	}
+	if num1 == 0 {
+		result, err := strconv.Atoi(txt2 + txt3)
+		if err != nil {
+			fmt.Println("Insira números válidos")
+		}
+		fmt.Printf("%d, %f", result, math.Pow(float64(result), 2))
+		return
+	} else if num1 == 0 && num2 == 0{
+		fmt.Println(txt3)
+		return
+	}else if num1 == 0 && num2 == 0 && num3 == 0{
+		fmt.Println(txt3)
+		return
+	}else {
+		fmt.Println(txt1 + txt2 + txt3)
+		return
+	}
 }
 
 func Ex4() {

@@ -10,10 +10,10 @@ import (
 
 var scanner = bufio.NewScanner(os.Stdin)
 
-func calcularMedia(notas [3]float64) (media float64){
+func calcularMedia(notas [3]float64) (media float64) {
 	var soma float64
-	for _, nota := range notas{
-		
+	for _, nota := range notas {
+
 		soma += nota
 	}
 
@@ -45,15 +45,69 @@ func Ex1() {
 
 	fmt.Printf("MÉDIA = %.2f \n", media)
 
-	if media >= 6{
+	if media >= 6 {
 		fmt.Println("APROVADO")
-	}else {
+	} else {
 		fmt.Println("REPROVADO")
 	}
 }
 
 func Ex2() {
-	fmt.Println("Exercício 2")
+	fmt.Println("Quantos casos deverão ser testados?")
+	scanner.Scan()
+	quantidadeCasos := scanner.Text()
+	numeroCasos, err := strconv.Atoi(quantidadeCasos)
+	if err != nil {
+		fmt.Println("A quantidade de casos deve ser um número inteiro")
+		fmt.Println(numeroCasos)
+		return
+	}
+
+	casos := make([][5]float64, 0)
+
+	for range numeroCasos {
+		scanner.Scan()
+
+		infos := scanner.Text()
+
+		infosSlice := strings.Fields(infos)
+
+		infosFloats := [5]float64{}
+
+		for i := 0; i <= 4; i++ {
+			number, err := strconv.ParseFloat(infosSlice[i], 64)
+			if err != nil {
+				fmt.Println("Números inválidos")
+				return
+			}
+			infosFloats[i] = number
+		}
+
+		var sum float64
+
+		for i, f := range infosFloats {
+			if i != 0 {
+				sum += f
+			}
+		}
+
+		if sum != 100 {
+			fmt.Println("A soma das porcentagens deve corresponder a 100%")
+			return
+		}
+
+		casos = append(casos, infosFloats)
+	}
+	
+	for i, c := range casos{
+		var result float64
+		result += (c[1] / 100) * c[0]
+		result += (c[2] / 100) * c[0] * 5
+		result += (c[3] / 100) * c[0] * 10
+		result += (c[4] / 100) * c[0] * 20
+		fmt.Printf("A RENDA DO JOGO N. %d E = %.2f \n", i + 1, result)
+	}
+	return
 }
 
 func Ex3() {

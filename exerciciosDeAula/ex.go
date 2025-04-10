@@ -70,6 +70,6 @@ func Search(){
 		}
 	}
 
-	fmt.Printf("Não foi possível encontrar o número %d no conjunto amostral \n", bInt)
+	fmt.Print(-1)
 	return
 }

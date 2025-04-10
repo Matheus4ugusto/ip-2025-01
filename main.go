@@ -105,6 +105,7 @@ func main() {
 		},
 		"Ex aulas": {
 			1: exerciciosdeaula.CalculateSum,
+			2: exerciciosdeaula.Search,
 		},
 	}
 

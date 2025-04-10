@@ -150,7 +150,25 @@ func Ex3() {
 }
 
 func Ex4() {
-	fmt.Println("Exercício 4")
+	scanner.Scan()
+	s := scanner.Text()
+	minSalary, err1 := strconv.ParseFloat(s, 64)
+
+	scanner.Scan()
+	q := scanner.Text()
+	quantity, err2 := strconv.ParseFloat(q, 64)
+
+	if err1 != nil || err2 != nil {
+		fmt.Println("Insira números válidos")
+	}
+
+	kW := 0.7 * minSalary / 100
+
+	debit := kW * quantity
+
+	fmt.Printf("Custo por kW: R$%.2f \n", kW)
+	fmt.Printf("Custo do consumo: R$%.2f \n", debit)
+	fmt.Printf("Custo com desconto: R$%.2f \n", debit * 0.9)
 }
 
 func Ex5() {

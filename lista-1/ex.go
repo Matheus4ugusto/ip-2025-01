@@ -172,11 +172,66 @@ func Ex4() {
 }
 
 func Ex5() {
-	fmt.Println("Exercício 5")
+	scanner.Scan()
+	i := scanner.Text()
+
+	infosSlice := strings.Fields(i)
+
+	numeroIdentificador := infosSlice[0]
+
+	consumo, err := strconv.ParseFloat(infosSlice[1], 64)
+
+	tipo := infosSlice[2]
+
+	if err != nil {
+		fmt.Println("Insira números válidos")
+		return
+	}
+
+	var valor float64
+
+	if tipo == "R"{
+		valor = 5 + (0.05 * consumo)
+	} 
+	if tipo == "C" {
+		if consumo <= 80 {
+			valor = 500
+		}else {
+			valor = 500 + (0.25 * (consumo - 80))
+		}
+	}
+	if tipo == "I" {
+		if consumo <= 100 {
+			valor = 800
+		} else{
+			valor = 800 + (0.04 * (consumo - 100))
+		}
+	}
+
+	fmt.Printf("CONTA = %s \n", numeroIdentificador)
+	fmt.Printf("VALOR DA CONTA = %.2f \n", valor)
 }
 
 func Ex6() {
-	fmt.Println("Exercício 6")
+	scanner.Scan()
+	n, err := strconv.Atoi(scanner.Text())
+
+	if err !=nil {
+		fmt.Println("Insira um número válido")
+	}
+
+	temperaturas := make([]float64, 0)
+	
+	for range n{
+		scanner.Scan()
+		i, err1 := strconv.ParseFloat(scanner.Text(), 64)
+
+		if err1 !=nil {
+			fmt.Println("Insira um número válido")
+		}
+		
+		temperaturas = append(temperaturas, i)
+	}
 }
 
 func Ex7() {

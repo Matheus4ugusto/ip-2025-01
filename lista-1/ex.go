@@ -108,7 +108,6 @@ func Ex2() {
 		result += (c[4] / 100) * c[0] * 20
 		fmt.Printf("A RENDA DO JOGO N. %d E = %.2f \n", i+1, result)
 	}
-	return
 }
 
 func Ex3() {
